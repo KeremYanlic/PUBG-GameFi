@@ -20,20 +20,53 @@ public class WeaponDetailsSO : ScriptableObject
     #endregion
     public GameObject weaponPrefab;
 
+    #region Tooltip
+    [Tooltip("Weapon type")]
+    #endregion
+    public WeaponType weaponType;
+
     #region Header WEAPON CONFIGURATION
     [Space(10)]
     [Header("WEAPON CONFIGURATION")]
     #endregion
 
     #region Tooltip
-    [Tooltip("Weapon Shoot Position - the offset position for the end of the weapon from the sprite pivot point")]
+    [Tooltip("Weapon Spawn Position")]
+    #endregion
+    public Vector3 weaponSpawnPosition;
+
+    #region Tooltip
+    [Tooltip("Weapon Spawn Rotation")]
+    #endregion
+    public Vector3 weaponSpawnRotation;
+
+    #region Tooltip
+    [Tooltip("Weapon Shoot Position")]
     #endregion
     public Vector3 weaponShootPosition;
+
+
+    #region Tooltip
+    [Tooltip("Weapon Effect Position ")]
+    #endregion
+    public Vector3 weaponEffectPosition;
+
+
+    #region Tooltip
+    [Tooltip("Weapon Snappiness")]
+    #endregion
+    public float weaponSnappiness;
+
+    #region Tooltip
+    [Tooltip("Return speed")]
+    #endregion
+    public float weaponReturnSpeed;
+
 
     #region Tooltip
     [Tooltip("Weapon current ammo")]
     #endregion 
-    public AmmoDetailsSO weaponCurrentAmmo;
+    public BulletDetailsSO weaponCurrentAmmo;
 
     #region Tooltip
     [Tooltip("Weapon shoot effect SO - contains particle effect parameters to be used in conjunction with the weaponShootEffectPrefab ")]
@@ -45,18 +78,18 @@ public class WeaponDetailsSO : ScriptableObject
     #endregion Tooltip
     public WeaponShootEffectSO weaponShootEffectFire;
 
-    /*
+    
     #region Tooltip
     [Tooltip("The firing sound effect SO for the weapon")]
     #endregion Tooltip
-    public SoundEffectSO weaponFiringSoundEffect; */
+    public SoundEffectSO weaponFiringSoundEffect;
 
-    /*
+   
     #region Tooltip
     [Tooltip("The reloading sound effect SO for the weapon")]
     #endregion Tooltip
     public SoundEffectSO weaponReloadingSoundEffect; 
-    */
+    
 
     #region Header WEAPON OPERATING VALUES
     [Space(10)]
@@ -73,20 +106,11 @@ public class WeaponDetailsSO : ScriptableObject
     public Vector3 weaponADSRecoil;
 
     #region Tooltip
-    [Tooltip("Weapon sitting recoil vector")]
-    #endregion
-    public Vector3 weaponSittingRecoil;
-
-    #region Tooltip
     [Tooltip("The weapon capacity - shots before a reload")]
     #endregion
     public int weaponClipAmmoCapacity = 6;
 
-    #region Tooltip
-    [Tooltip("Weapon ammo capacity - the maximum number of rounds at that can be held for this weapon")]
-    #endregion
-    public int weaponAmmoCapacity = 100;
-
+    
     #region Tooltip
     [Tooltip("Weapon Fire Rate - 0.2 means 5 shots a second")]
     #endregion
@@ -109,7 +133,6 @@ public class WeaponDetailsSO : ScriptableObject
         UtilsClass.ValidateCheckEmptyString(this, nameof(weaponName), weaponName);
         UtilsClass.ValidateCheckNullValue(this, nameof(weaponPrefab), weaponPrefab);
         UtilsClass.ValidateCheckPositiveValue(this, nameof(weaponClipAmmoCapacity), weaponClipAmmoCapacity, false);
-        UtilsClass.ValidateCheckPositiveValue(this, nameof(weaponAmmoCapacity), weaponAmmoCapacity, false);
         UtilsClass.ValidateCheckPositiveValue(this, nameof(weaponFireRate), weaponFireRate, false);
     }
 #endif
