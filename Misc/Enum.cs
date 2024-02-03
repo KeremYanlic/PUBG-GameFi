@@ -19,3 +19,9 @@ public enum ShootingMode
     Burst,
     Auto
 }
+
+public enum WeaponType
+{
+    MainWeapon,
+    Pistol
+}
